@@ -1,11 +1,11 @@
 import processing.core.PApplet;
 
+/**
+   * This program will generate an image of a house in a random position & of a random size
+   * @author: JohnDuarte23
+*/
 public class Sketch extends PApplet {
 	
-  /**
-   * This program will generate an image of a house in a random position & of a random size
-   * @JohnDuarte23
-   */
   public void settings() {
 	// size call
     size(400, 400);
@@ -41,16 +41,18 @@ public class Sketch extends PApplet {
   float fltSquareDistance1 = fltSquareSize / 4;
   float fltSquareDistance2 = fltSquareSize / 4;
 
-  boolean blnBlue = (fltSquareX > 200);
-  boolean blnRed = (fltSquareY > 200);  
+  boolean blnIsBlue = (fltSquareX > 200);
+  boolean blnIsRed = (fltSquareY > 200);  
 
   // Commands used to make my drawing
   public void draw() {
 
+    // Body of the house
     fill(255, 255, 255);
     rectMode(CENTER);
     rect(fltSquareX, fltSquareY, fltSquareSize, fltSquareSize);
 
+    // Windows of the house
     fill(120, 246, 252);
     rectMode(CENTER);
     rect(fltSquareX + fltSquareDistance1, fltSquareY - fltSquareDistance1, fltWindowSize, fltWindowSize);
@@ -59,13 +61,14 @@ public class Sketch extends PApplet {
     rectMode(CENTER);
     rect(fltSquareX - fltSquareDistance2, fltSquareY - fltSquareDistance2, fltWindowSize, fltWindowSize);
 
+    // Door of the house
     fill(101, 67, 53);
     rectMode(CENTER);
     rect(fltSquareX, fltSquareY + (fltSquareSize / 4), fltSquareSize / 4, fltSquareSize / 2);
 
+    // Roof of the house
     fill(50, 59, 60);
     triangle(fltSquareX - (fltSquareSize / 2), fltSquareY - (fltSquareSize/ 2), fltSquareX + (fltSquareSize / 2), fltSquareY - (fltSquareSize / 2), fltSquareX, fltSquareY - fltSquareSize);
 
   }
-
 }
