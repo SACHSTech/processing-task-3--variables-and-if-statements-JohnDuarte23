@@ -2,37 +2,70 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 	
-	
   /**
-   * Called once at the beginning of execution, put your size all in this method   
+   * This program will generate an image of a house in a random position & of a random size
    * @JohnDuarte23
-   * sdfsadfsf
    */
   public void settings() {
-	// put your size call here
+	// size call
     size(400, 400);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
+  // Sets background colour
   public void setup() {
-    background(210, 255, 173);
-  }
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
-  public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
-
-    stroke(255);
-    line(50, 125, 70, 50);  
+    boolean blnBlue = (fltSquareX > 200);
+    boolean blnRed = (fltSquareY > 200);
+  
+    if (blnBlue && !blnRed){
+      background(0, 0, 255);
+    }
+    else if (!blnBlue && blnRed){
+      background(255, 0, 0);
+    }
+    else{
+      background (0, 255, 0);
+        
+    // command that shows the time
+    fill(0, 0, 0);
+    textSize(height/20);
+    text(month() + "/" + day() + "/" + year() + " " + hour() + ":" + minute() + ":" + second(), (width/40), (float) (height / 1.01));
+    }
   }
   
-  // define other methods down here.
+  // Setting variables for the drawing
+  float fltSquareX = random(100, width - 100);
+  float fltSquareY = random(100, height - 100);
+  float fltSquareSize = random(25,125);
+  float fltWindowSize = (fltSquareSize / 4);
+  float fltSquareDistance1 = fltSquareSize / 4;
+  float fltSquareDistance2 = fltSquareSize / 4;
+
+  boolean blnBlue = (fltSquareX > 200);
+  boolean blnRed = (fltSquareY > 200);  
+
+  // Commands used to make my drawing
+  public void draw() {
+
+    fill(255, 255, 255);
+    rectMode(CENTER);
+    rect(fltSquareX, fltSquareY, fltSquareSize, fltSquareSize);
+
+    fill(120, 246, 252);
+    rectMode(CENTER);
+    rect(fltSquareX + fltSquareDistance1, fltSquareY - fltSquareDistance1, fltWindowSize, fltWindowSize);
+
+    fill(120, 246, 252);
+    rectMode(CENTER);
+    rect(fltSquareX - fltSquareDistance2, fltSquareY - fltSquareDistance2, fltWindowSize, fltWindowSize);
+
+    fill(101, 67, 53);
+    rectMode(CENTER);
+    rect(fltSquareX, fltSquareY + (fltSquareSize / 4), fltSquareSize / 4, fltSquareSize / 2);
+
+    fill(50, 59, 60);
+    triangle(fltSquareX - (fltSquareSize / 2), fltSquareY - (fltSquareSize/ 2), fltSquareX + (fltSquareSize / 2), fltSquareY - (fltSquareSize / 2), fltSquareX, fltSquareY - fltSquareSize);
+
+  }
+
 }
